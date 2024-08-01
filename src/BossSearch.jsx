@@ -30,7 +30,7 @@ const BossSearch = () => {
   const [selectedBoss, setSelectedBoss] = useState(null);
   const [sortOrder, setSortOrder] = useState("none");
   const [currentPage, setCurrentPage] = useState(1);
-  const bossesPerPage = 50;
+  const bossesPerPage = 550;
 
   useEffect(() => {
     const fetchBosses = async () => {
