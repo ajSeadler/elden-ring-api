@@ -30,13 +30,13 @@ const BossSearch = () => {
   const [selectedBoss, setSelectedBoss] = useState(null);
   const [sortOrder, setSortOrder] = useState("none");
   const [currentPage, setCurrentPage] = useState(1);
-  const bossesPerPage = 550;
+  const bossesPerPage = 50;
 
   useEffect(() => {
     const fetchBosses = async () => {
       try {
         const response = await fetch(
-          "https://eldenring.fanapis.com/api/bosses"
+          "https://eldenring.fanapis.com/api/bosses?limit=200"
         );
         const data = await response.json();
 
