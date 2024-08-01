@@ -11,7 +11,6 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  Pagination,
   FormControl,
   InputLabel,
   Select,
@@ -29,8 +28,6 @@ const BossSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBoss, setSelectedBoss] = useState(null);
   const [sortOrder, setSortOrder] = useState("none");
-  const [currentPage, setCurrentPage] = useState();
-  const bossesPerPage = 50;
 
   useEffect(() => {
     const fetchBosses = async () => {
@@ -60,20 +57,11 @@ const BossSearch = () => {
     }
 
     setFilteredBosses(filtered);
-    setCurrentPage(1);
   }, [searchQuery, bosses, sortOrder]);
-
-  const handlePageChange = (event, value) => {
-    setCurrentPage(value);
-  };
 
   const handleSortChange = (event) => {
     setSortOrder(event.target.value);
   };
-
-  const indexOfLastBoss = currentPage * bossesPerPage;
-  const indexOfFirstBoss = indexOfLastBoss - bossesPerPage;
-  const currentBosses = filteredBosses.slice(indexOfFirstBoss, indexOfLastBoss);
 
   return (
     <div className="boss-search-container">
@@ -96,7 +84,7 @@ const BossSearch = () => {
       </FormControl>
 
       <Grid container spacing={2} className="boss-grid">
-        {currentBosses.map((boss) => (
+        {filteredBosses.map((boss) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={boss.id}>
             <Card className="boss-card" onClick={() => setSelectedBoss(boss)}>
               <CardMedia
@@ -121,14 +109,6 @@ const BossSearch = () => {
           </Grid>
         ))}
       </Grid>
-
-      <Pagination
-        count={Math.ceil(filteredBosses.length / bossesPerPage)}
-        page={currentPage}
-        onChange={handlePageChange}
-        color="primary"
-        className="pagination"
-      />
 
       <Dialog
         open={Boolean(selectedBoss)}
