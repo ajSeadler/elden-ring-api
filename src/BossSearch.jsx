@@ -35,25 +35,12 @@ const BossSearch = () => {
   useEffect(() => {
     const fetchBosses = async () => {
       try {
-        const response = await fetch(
-          "https://eldenring.fanapis.com/api/bosses?limit=200"
-        );
+        const response = await fetch("https://eldenring.fanapis.com/api/bosses");
         const data = await response.json();
 
-        // Filter out duplicates based on normalized boss names and filter out bosses without images
-        const uniqueBossesMap = new Map();
-
-        data.data.forEach((boss) => {
-          if (boss.image) {
-            const normalizedName = normalizeName(boss.name);
-            if (!uniqueBossesMap.has(normalizedName)) {
-              uniqueBossesMap.set(normalizedName, boss);
-            }
-          }
-        });
-
-        setBosses(Array.from(uniqueBossesMap.values()));
-        setFilteredBosses(Array.from(uniqueBossesMap.values()));
+        // Directly set fetched data without additional filtering
+        setBosses(data.data);
+        setFilteredBosses(data.data);
       } catch (error) {
         console.error("Error fetching bosses:", error);
       }
