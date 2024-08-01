@@ -36,7 +36,7 @@ const BossSearch = () => {
     const fetchBosses = async () => {
       try {
         const response = await fetch(
-          "https://eldenring.fanapis.com/api/bosses?limit=500"
+          "https://eldenring.fanapis.com/api/bosses"
         );
         const data = await response.json();
 
