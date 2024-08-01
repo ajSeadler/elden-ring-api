@@ -29,7 +29,7 @@ const BossSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBoss, setSelectedBoss] = useState(null);
   const [sortOrder, setSortOrder] = useState("none");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState();
   const bossesPerPage = 50;
 
   useEffect(() => {
