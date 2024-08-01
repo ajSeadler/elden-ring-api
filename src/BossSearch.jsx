@@ -37,8 +37,6 @@ const BossSearch = () => {
       try {
         const response = await fetch("https://eldenring.fanapis.com/api/bosses");
         const data = await response.json();
-
-        // Directly set fetched data without additional filtering
         setBosses(data.data);
         setFilteredBosses(data.data);
       } catch (error) {
@@ -77,14 +75,6 @@ const BossSearch = () => {
   const indexOfFirstBoss = indexOfLastBoss - bossesPerPage;
   const currentBosses = filteredBosses.slice(indexOfFirstBoss, indexOfLastBoss);
 
-  const handleCardClick = (boss) => {
-    setSelectedBoss(boss);
-  };
-
-  const handleClose = () => {
-    setSelectedBoss(null);
-  };
-
   return (
     <div className="boss-search-container">
       <TextField
@@ -108,7 +98,7 @@ const BossSearch = () => {
       <Grid container spacing={2} className="boss-grid">
         {currentBosses.map((boss) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={boss.id}>
-            <Card className="boss-card" onClick={() => handleCardClick(boss)}>
+            <Card className="boss-card" onClick={() => setSelectedBoss(boss)}>
               <CardMedia
                 component="img"
                 image={boss.image}
@@ -142,8 +132,7 @@ const BossSearch = () => {
 
       <Dialog
         open={Boolean(selectedBoss)}
-        onClose={handleClose}
-        classes={{ paper: "dialog-paper" }}
+        onClose={() => setSelectedBoss(null)}
         maxWidth="md"
         fullWidth
       >
@@ -182,7 +171,7 @@ const BossSearch = () => {
             </DialogContent>
             <DialogActions className="dialog-actions">
               <Button
-                onClick={handleClose}
+                onClick={() => setSelectedBoss(null)}
                 color="primary"
                 className="dialog-close-button"
               >
