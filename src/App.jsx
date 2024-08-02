@@ -1,25 +1,16 @@
-// src/App.js
-
+// App.jsx
 import React from "react";
-import BossSearch from "./BossSearch";
-import ScrollToTopButton from "./ScollToTopButton";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import MainContent from "./MainContent";
 
-const App = () => {
+function App() {
   return (
-    <div className="app-container">
-      <header className="header">
-        <h3 className="header-title">Elden rinG</h3>
-        <h3 className="header-subtitle">baby back bitches</h3>
-      </header>
-      <main className="main-content">
-        <BossSearch />
-      </main>
-      <footer className="footer"></footer>
-
-      {/* Add the ScrollToTopButton */}
-      <ScrollToTopButton />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/main" element={<MainContent />} />
+    </Routes>
   );
-};
+}
 
 export default App;

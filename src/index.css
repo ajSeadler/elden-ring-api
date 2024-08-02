@@ -19,10 +19,46 @@ body {
   color: #e0e0e0; /* Light text color */
   overflow-x: hidden;
 }
-
 /* index.css */
 
-/* Scroll to Top Button Styles */
+/* Home Container Styles */
+.home-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100vh !important; /* Full viewport height */
+  background: url("/background-tarnished.jpg") no-repeat center center fixed !important; /* Fixed background */
+  background-size: cover !important;
+  overflow: hidden !important;
+}
+
+/* Elden Ring Button Styles */
+.elden-ring-button {
+  display: inline-block !important;
+  text-decoration: none !important; /* Remove underline from link */
+  font-family: "Elden Ring", Arial, sans-serif !important;
+  font-size: 2rem !important;
+  padding: 12px 24px !important;
+  backdrop-filter: blur(5px);
+  background-color: transparent !important; /* Dark button background */
+  color: #ffd700 !important; /* Elden Ring gold color */
+  border: 2px solid #8a8a8a !important; /* Metallic border */
+  border-radius: 12px !important; /* Rounded corners */
+  cursor: pointer !important;
+  transition: transform 0.3s ease, background-color 0.3s ease-in-out !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.elden-ring-button:hover {
+  transform: translateY(-5px) !important; /* Lift effect */
+  background-color: #444444 !important; /* Lighter background on hover */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+.elden-ring-button:focus {
+  outline: none !important;
+}
+
 .scroll-to-top-button {
   position: fixed !important;
   bottom: 30px !important;
