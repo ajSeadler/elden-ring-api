@@ -11,7 +11,6 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  Pagination,
   FormControl,
   InputLabel,
   Select,
@@ -28,15 +27,13 @@ const BossSearch = () => {
   const [filteredBosses, setFilteredBosses] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBoss, setSelectedBoss] = useState(null);
-  const [sortOrder, setSortOrder] = useState("none");
-  const [currentPage, setCurrentPage] = useState(1);
-  const bossesPerPage = 50;
+  const [sortOrder, setSortOrder] = useState("A to Z");
 
   useEffect(() => {
     const fetchBosses = async () => {
       try {
         const response = await fetch(
-          "https://eldenring.fanapis.com/api/bosses?limit=500"
+          "https://eldenring.fanapis.com/api/bosses?limit=100"
         );
         const data = await response.json();
 
@@ -75,20 +72,11 @@ const BossSearch = () => {
     }
 
     setFilteredBosses(filtered);
-    setCurrentPage(1);
   }, [searchQuery, bosses, sortOrder]);
-
-  const handlePageChange = (event, value) => {
-    setCurrentPage(value);
-  };
 
   const handleSortChange = (event) => {
     setSortOrder(event.target.value);
   };
-
-  const indexOfLastBoss = currentPage * bossesPerPage;
-  const indexOfFirstBoss = indexOfLastBoss - bossesPerPage;
-  const currentBosses = filteredBosses.slice(indexOfFirstBoss, indexOfLastBoss);
 
   const handleCardClick = (boss) => {
     setSelectedBoss(boss);
@@ -119,7 +107,7 @@ const BossSearch = () => {
       </FormControl>
 
       <Grid container spacing={2} className="boss-grid">
-        {currentBosses.map((boss) => (
+        {filteredBosses.map((boss) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={boss.id}>
             <Card className="boss-card" onClick={() => handleCardClick(boss)}>
               <CardMedia
@@ -144,14 +132,6 @@ const BossSearch = () => {
           </Grid>
         ))}
       </Grid>
-
-      <Pagination
-        count={Math.ceil(filteredBosses.length / bossesPerPage)}
-        page={currentPage}
-        onChange={handlePageChange}
-        color="primary"
-        className="pagination"
-      />
 
       <Dialog
         open={Boolean(selectedBoss)}
