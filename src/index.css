@@ -129,7 +129,7 @@
   justify-content: center;
   align-items: center;
   padding: 5px;
-  background-color: transparent; /* Darker header background */
+  background-color: transparent;
 }
 
 .header-title {
@@ -161,7 +161,7 @@
 .main-content {
   flex: 1;
   padding: 16px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Optional: inner shadow for depth */
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
   overflow-y: auto; /* Allows scrolling if content is too large */
 }
 
@@ -209,31 +209,6 @@
   outline: none; /* Remove default focus outline */
 }
 
-/* Sort Control */
-.sort-control {
-  margin-bottom: 16px !important; /* Reduced margin for a cleaner look */
-  background-color: #3b3b3b;
-  border-radius: 8px; /* Adjusted for a cleaner look */
-  padding: 6px; /* Reduced padding for a cleaner look */
-}
-
-.sort-control .MuiInputLabel-root {
-  color: #e0e0e0; /* Light color for the label */
-  margin-bottom: 6px; /* Reduced space for a cleaner look */
-}
-
-.sort-control .MuiSelect-root {
-  background-color: #2a2a2a; /* Background color of the select */
-  color: #e0e0e0; /* Text color inside the select */
-  border-radius: 6px; /* Adjusted for a cleaner look */
-  border: 1px solid #666; /* Border around the select */
-  padding: 8px; /* Reduced padding for a cleaner look */
-}
-
-.sort-control .MuiSelect-root:hover {
-  background-color: #3b3b3b; /* Lighter background on hover */
-}
-
 /* Boss Grid */
 .boss-grid {
   margin-bottom: 16px; /* Reduced margin for a cleaner look */
@@ -275,7 +250,7 @@
 }
 
 .boss-card-title {
-  color: #d5bd38; /* Gold color */
+  color: #fff;
   font-size: 1.2rem; /* Adjusted for cleaner look */
 }
 
@@ -331,6 +306,11 @@
   font-size: 1.1rem !important; /* Adjusted for a cleaner look */
   text-align: left;
   margin-bottom: 8% !important; /* Reduced margin for cleaner look */
+}
+
+.hp-bar-img {
+  width: 200px; /* Adjust the size as needed */
+  height: 20px;
 }
 
 /* Dialog Item Cards */

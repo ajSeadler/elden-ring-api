@@ -156,7 +156,7 @@ const bossData = [
     location:
       "Warmaster's Shack, Northern Stormhill, Church of Vows, East Liurnia, Hermit Merchant's Shack, Leyndell Royal Captial, Dragonbarrow, North Caelid",
     drops: ["2700 Runes", "Bone Peddler's Bell Bearing"],
-    healthPoints: "6000 Runes, Meat Peddler's Bell Bearing",
+    healthPoints: "???",
   },
   {
     id: "17f69a61779l0i1ulv0a3ru8iy0zh5",

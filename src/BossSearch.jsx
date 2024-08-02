@@ -106,12 +106,12 @@ const BossSearch = () => {
         <Button onClick={sortByNameDesc} variant="outlined" color="primary">
           Z-A
         </Button>
-        <Button onClick={sortByHealthAsc} variant="outlined" color="primary">
-          Low HP
-        </Button>
-        <Button onClick={sortByHealthDesc} variant="outlined" color="primary">
-          High HP
-        </Button>
+        {/* <Button onClick={sortByHealthAsc} variant="outlined" color="primary">
+            Low HP
+          </Button>
+          <Button onClick={sortByHealthDesc} variant="outlined" color="primary">
+            High HP
+          </Button> */}
       </div>
 
       <Grid container spacing={2} className="boss-grid">
@@ -134,9 +134,15 @@ const BossSearch = () => {
                     {boss.name}
                   </Typography>
                   <div className="dialog-item">
-                    <HealthAndSafetyIcon className="dialog-item-icon" />
+                    <div className="dialog-item-icon">
+                      <img
+                        src="/hpBar.png"
+                        alt="HP Bar"
+                        className="hp-bar-img"
+                      />
+                    </div>
                     <Typography variant="body1" className="dialog-item-text">
-                      {boss.healthPoints}
+                      {boss.healthPoints} HP
                     </Typography>
                   </div>
                 </CardContent>
