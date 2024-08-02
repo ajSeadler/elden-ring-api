@@ -116,8 +116,9 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: url("/background-tarnished.jpg") no-repeat center center fixed !important; /* Fixed background */
-  background-size: cover !important;
+  background: url("/background-tarnished.jpg") no-repeat center center fixed;
+  background-size: cover; /* Ensures the image covers the entire container */
+  background-attachment: fixed; /* Keeps the image fixed when scrolling */
 }
 
 .header {
