@@ -284,8 +284,8 @@
 
 /* Dialog Grid Layout for Desktop */
 .dialog-content {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns for desktop */
+  display: flex;
+  flex-direction: column; /* Two columns for desktop */
   gap: 16px; /* Reduced gap for cleaner look */
   padding: 16px !important; /* Reduced padding for cleaner look */
   background-color: #1e1e1e;
