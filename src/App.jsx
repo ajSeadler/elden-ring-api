@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div className="app-container">
       <header className="header">
-        <h1 className="header-title">Baby Back Bitches</h1>
+        <img className="header-title" src="/elden-ring-logo.png"></img>
       </header>
       <main className="main-content">
         <BossSearch />

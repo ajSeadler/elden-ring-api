@@ -9,6 +9,7 @@ const bossData = [
     location: "Toilet",
     drops: ["420,666 Runes", "Inquisitor's Grand Hole"],
     healthPoints: "???",
+    weakness: "Nothing",
   },
 
   {
@@ -16,9 +17,9 @@ const bossData = [
     name: "Abductor Virgins",
     image:
       "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/04/elden-ring-abductor-virgin.jpg?q=50&fit=crop&w=1100&h=618&dpr=1.5",
-    region: "Mount Gelmir",
+    region: "Mount Gelmir, various",
     description: "Deadly mechanical constructs who wield massive blades.",
-    location: "Volcano Manor",
+    location: "Volcano Manor, various",
     drops: ["10.000 Runes", "Inquisitor's Girandole"],
     healthPoints: "???",
   },
@@ -30,7 +31,7 @@ const bossData = [
     region: "Liurnia of the Lakes",
     description:
       "Remarkably agile and aggressive warrior. Dangerous even for those with shield coverage...",
-    location: "Ringleader's Evergoal, Liurnia of the Lakes",
+    location: "Ringleader's Evergoal",
     drops: ["8.000 Runes", "Black Knife Tiche"],
     healthPoints: "???",
   },

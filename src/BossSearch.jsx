@@ -17,6 +17,7 @@ import {
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
+import { FaCrutch } from "react-icons/fa";
 import bossData from "./bossData"; // Import the data
 
 const normalizeName = (name) => name.replace(/[\.,]/g, "").trim().toLowerCase();
@@ -119,13 +120,19 @@ const BossSearch = () => {
               <div className="dialog-item">
                 <LocationOnIcon className="dialog-item-icon" />
                 <Typography variant="body1" className="dialog-item-text">
-                  {selectedBoss.location}
+                  {selectedBoss.region}, {selectedBoss.location}
                 </Typography>
               </div>
               <div className="dialog-item">
                 <HealthAndSafetyIcon className="dialog-item-icon" />
                 <Typography variant="body1" className="dialog-item-text">
                   {selectedBoss.healthPoints}
+                </Typography>
+              </div>
+              <div className="dialog-item">
+                <Typography variant="body1" className="dialog-item-text">
+                  <FaCrutch className="dialog-item-icon" />
+                  {selectedBoss.weakness}
                 </Typography>
               </div>
               <div className="dialog-item">
