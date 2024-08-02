@@ -215,10 +215,11 @@
 }
 
 .boss-card {
-  background-color: #2a2a2a !important;
+  background-color: transparent !important;
+  backdrop-filter: blur(10px);
   height: 100%;
   border: 1px solid #444;
-  border-radius: 8px;
+  border-radius: 20px !important;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -268,8 +269,9 @@
 
 /* Dialog */
 .dialog-paper {
-  border-radius: 12px; /* Adjusted for a cleaner look */
-  background-color: #1e1e1e !important;
+  border-radius: 20px !important; /* Adjusted for a cleaner look */
+  background-color: transparent !important;
+  backdrop-filter: blur(50px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -288,7 +290,8 @@
   flex-direction: column; /* Two columns for desktop */
   gap: 16px; /* Reduced gap for cleaner look */
   padding: 16px !important; /* Reduced padding for cleaner look */
-  background-color: #1e1e1e;
+  background-color: transparent !important;
+  backdrop-filter: blur(50px);
 }
 
 .dialog-image {
