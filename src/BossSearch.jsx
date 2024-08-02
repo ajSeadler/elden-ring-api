@@ -107,10 +107,10 @@ const BossSearch = () => {
           Z-A
         </Button>
         <Button onClick={sortByHealthAsc} variant="outlined" color="primary">
-          Lowest HP
+          Low HP
         </Button>
         <Button onClick={sortByHealthDesc} variant="outlined" color="primary">
-          Highest HP
+          High HP
         </Button>
       </div>
 

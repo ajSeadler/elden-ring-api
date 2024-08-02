@@ -65,7 +65,7 @@
   border: 2px solid #8a8a8a !important; /* Metallic border */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
   transition: transform 0.3s ease, opacity 0.3s ease-in-out !important;
-  z-index: 1000 !important;
+  z-index: 9999 !important;
   font-size: 0 !important; /* Hide text content */
 }
 
@@ -129,8 +129,7 @@
   justify-content: center;
   align-items: center;
   padding: 5px;
-  background-color: #1c1c1c; /* Darker header background */
-  border-bottom: 1px solid #444; /* Subtle border for separation */
+  background-color: transparent; /* Darker header background */
 }
 
 .header-title {
@@ -184,10 +183,10 @@
 /* Search Bar */
 .search-bar {
   margin-bottom: 16px !important; /* Reduced margin for a cleaner look */
-  background-color: #3b3b3b;
+  background-color: #d2d2d2;
   border: 1px solid #666;
   border-radius: 8px; /* Adjusted for a cleaner look */
-  color: #e0e0e0;
+  color: #000000 !important;
   transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
 }
 
