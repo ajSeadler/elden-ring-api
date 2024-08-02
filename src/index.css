@@ -1,16 +1,21 @@
-/* Global Styles */
+@font-face {
+  font-family: "Elden Ring";
+  src: url("/public/elden-ring.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Elden Ring" !important;
 }
 
 body {
   background-color: #1c1c1c; /* Dark background */
   color: #e0e0e0; /* Light text color */
   overflow-x: hidden;
-  font-size: 16px;
 }
 
 /* App Container */
@@ -22,26 +27,27 @@ body {
 
 .header {
   display: flex;
-  position: sticky;
-  top: 0;
-  z-index: 9999;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 5px;
   background-color: #1c1c1c; /* Darker header background */
   border-bottom: 1px solid #444; /* Subtle border for separation */
 }
 
 .header-title {
-  max-width: 100%;
-  height: auto;
-  max-height: 80px; /* Adjust to keep the logo at a reasonable size */
+  font-size: 2.5rem; /* Adjusted for a cleaner look */
+}
+
+.header-subtitle {
+  font-size: 1.2rem; /* Adjusted for a cleaner look */
+  margin-top: -0.5%;
 }
 
 /* Main Content */
 .main-content {
   flex: 1;
-  padding: 20px;
+  padding: 16px; /* Reduced padding for a cleaner look */
 }
 
 /* Footer */
@@ -49,39 +55,39 @@ body {
   background-color: #2a2a2a;
   color: #a0a0a0;
   text-align: center;
-  padding: 10px;
+  padding: 8px; /* Reduced padding for a cleaner look */
   border-top: 1px solid #444;
 }
 
 /* Boss Search Container */
 .boss-search-container {
-  max-width: 1200px;
+  max-width: 1000px; /* Adjusted width for better mobile fit */
   margin: 0 auto;
 }
 
 /* Search Bar */
 .search-bar {
-  margin-bottom: 20px !important;
+  margin-bottom: 16px !important; /* Reduced margin for a cleaner look */
   background-color: #3b3b3b;
   border: 1px solid #666;
-  border-radius: 12px; /* Rounded corners */
+  border-radius: 8px; /* Adjusted for a cleaner look */
   color: #e0e0e0;
   transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
 }
 
 .search-bar input {
   color: #e0e0e0;
-  padding: 10px 16px; /* Padding inside the input */
-  border-radius: 12px; /* Rounded corners */
+  padding: 8px 12px; /* Reduced padding for a cleaner look */
+  border-radius: 8px; /* Adjusted for a cleaner look */
   border: none; /* Remove default border */
   width: 100%;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Subtle inner shadow */
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3); /* Subtle inner shadow */
 }
 
 .search-bar:hover,
 .search-bar:focus-within {
   background-color: #4a4a4a; /* Lighter background on hover or focus */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow on hover or focus */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Reduced shadow for cleaner look */
 }
 
 .search-bar input:focus {
@@ -90,23 +96,23 @@ body {
 
 /* Sort Control */
 .sort-control {
-  margin-bottom: 24px !important;
+  margin-bottom: 16px !important; /* Reduced margin for a cleaner look */
   background-color: #3b3b3b;
-  border-radius: 12px; /* Rounded corners */
-  padding: 8px; /* Padding around the select element */
+  border-radius: 8px; /* Adjusted for a cleaner look */
+  padding: 6px; /* Reduced padding for a cleaner look */
 }
 
 .sort-control .MuiInputLabel-root {
   color: #e0e0e0; /* Light color for the label */
-  margin-bottom: 8px; /* Space between the label and select element */
+  margin-bottom: 6px; /* Reduced space for a cleaner look */
 }
 
 .sort-control .MuiSelect-root {
   background-color: #2a2a2a; /* Background color of the select */
   color: #e0e0e0; /* Text color inside the select */
-  border-radius: 8px; /* Rounded corners for the select */
+  border-radius: 6px; /* Adjusted for a cleaner look */
   border: 1px solid #666; /* Border around the select */
-  padding: 10px; /* Padding inside the select */
+  padding: 8px; /* Reduced padding for a cleaner look */
 }
 
 .sort-control .MuiSelect-root:hover {
@@ -115,7 +121,7 @@ body {
 
 /* Boss Grid */
 .boss-grid {
-  margin-bottom: 24px;
+  margin-bottom: 16px; /* Reduced margin for a cleaner look */
 }
 
 .boss-card {
@@ -128,36 +134,39 @@ body {
 }
 
 .boss-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transform: scale(1.02); /* Slight scale for cleaner look */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Reduced shadow for cleaner look */
 }
 
 .boss-card-media {
-  height: 200px;
+  height: 150px; /* Adjusted for a cleaner look */
   object-fit: cover;
 }
 
 .boss-card-content {
-  padding: 16px;
+  padding: 12px; /* Reduced padding for a cleaner look */
 }
 
 .boss-card-title {
   color: #f2b632; /* Gold color */
+  font-size: 1.2rem; /* Adjusted for cleaner look */
 }
 
 .boss-card-description {
   color: #b0b0b0;
+  font-size: 0.9rem; /* Adjusted for cleaner look */
 }
 
 /* Pagination */
 .pagination {
   display: flex;
   justify-content: center;
-  margin: 24px 0;
+  margin: 16px 0; /* Reduced margin for a cleaner look */
 }
 
+/* Dialog */
 .dialog-paper {
-  border-radius: 16px;
+  border-radius: 12px; /* Adjusted for a cleaner look */
   background-color: #1e1e1e !important;
   overflow: hidden;
   display: flex;
@@ -167,136 +176,131 @@ body {
 }
 
 .dialog-title {
-  font-size: 1.8rem !important; /* Increased font size for better visibility */
-  font-weight: bold;
   color: #fff;
-  padding: 16px;
-  text-align: center;
-  margin: 0;
+  font-size: 2rem !important;
 }
 
+/* Dialog Grid Layout for Desktop */
 .dialog-content {
-  width: 50%;
-  padding: 24px; /* Increased padding for better spacing */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns for desktop */
+  gap: 16px; /* Reduced gap for cleaner look */
+  padding: 16px !important; /* Reduced padding for cleaner look */
   background-color: #1e1e1e;
-  display: flex;
-  flex-direction: column;
-  align-items: left !important; /* Center content horizontally */
 }
 
 .dialog-image {
-  width: 100%;
-  max-width: 400px; /* Limit the maximum width for better layout */
-  border-radius: 12px;
-  margin-bottom: 16px;
+  grid-column: span 2; /* Image spans both columns */
+  width: 60%; /* Adjusted for a cleaner look */
+  margin: auto;
+  height: auto;
+  border-radius: 8px; /* Adjusted for a cleaner look */
+  margin-bottom: 12px; /* Reduced margin for cleaner look */
 }
 
 .dialog-description {
+  grid-column: span 2; /* Description spans both columns */
   color: #ccc;
-  margin-bottom: 24px; /* Increased margin for spacing */
-  font-size: 1rem !important; /* Increased font size */
-  text-align: left; /* Center text alignment */
-  margin-bottom: 5% !important;
+  font-size: 1.1rem !important; /* Adjusted for a cleaner look */
+  text-align: left;
+  margin-bottom: 8% !important; /* Reduced margin for cleaner look */
 }
 
-.dialog-item {
-  display: flex;
-  align-items: left;
-  margin-bottom: 16px; /* Increased margin for spacing */
-  width: 100%; /* Full width for alignment */
-  justify-content: left;
-  text-align: left !important; /* Center items horizontally */
+/* Dialog Item Cards */
+.dialog-item-card {
+  background-color: #2a2a2a; /* Card background color */
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  width: 100%;
 }
 
 .dialog-item-icon {
   color: #ffcc00;
-  margin-right: 12px; /* Increased margin for better spacing */
-  font-size: 1.5rem; /* Slightly larger icon for visibility */
+  margin-right: 8px; /* Reduced margin for cleaner look */
+  font-size: 1.6rem !important; /* Adjusted for cleaner look */
 }
 
 .dialog-item-text {
   color: #fff;
-  font-size: 1.1rem; /* Increased font size */
+  font-size: 1.1rem !important; /* Adjusted for cleaner look */
   font-weight: normal;
 }
 
-.dialog-item-text.bold {
-  font-weight: bold; /* Use this class to bold text when necessary */
-}
-
 .dialog-close-button {
-  margin: 16px 0; /* Center button horizontally and provide spacing */
+  margin: 12px 0; /* Reduced margin for cleaner look */
   font-weight: bold;
+  color: #b50000 !important;
 }
 
 .dialog-actions {
-  padding: 16px; /* Add padding for better spacing around buttons */
+  padding: 12px; /* Reduced padding for cleaner look */
   display: flex;
-  justify-content: center; /* Center button horizontally */
+  justify-content: center;
 }
 
+/* Responsive Design */
 @media (max-width: 1024px) {
-  /* Tablets */
-  .dialog-title {
-    font-size: 1.6rem; /* Slightly smaller font size */
-  }
-
   .dialog-content {
-    padding: 16px; /* Reduced padding */
-    width: 100%;
+    grid-template-columns: 1fr; /* Single column for tablets */
+    padding: 12px; /* Reduced padding for cleaner look */
   }
 
   .dialog-image {
-    max-width: 300px; /* Reduced max-width */
+    width: 50% !important;
   }
 
   .dialog-description {
-    font-size: 1.1rem; /* Slightly smaller font size */
-    margin-bottom: 16px; /* Reduced margin */
+    font-size: 1rem; /* Adjusted for cleaner look */
+    margin-bottom: 12px; /* Reduced margin for cleaner look */
+  }
+
+  .dialog-item-card {
+    margin-bottom: 12px; /* Reduced margin for cleaner look */
   }
 
   .dialog-item-icon {
-    font-size: 1.3rem; /* Slightly smaller icon size */
+    font-size: 1.4rem; /* Adjusted for cleaner look */
   }
 
   .dialog-item-text {
-    font-size: 1rem; /* Slightly smaller font size */
+    font-size: 1rem; /* Adjusted for cleaner look */
   }
 
   .dialog-close-button {
-    margin: 12px 0; /* Reduced margin */
+    margin: 8px 0; /* Reduced margin for cleaner look */
   }
 }
 
 @media (max-width: 768px) {
-  /* Mobile devices */
-  .dialog-title {
-    font-size: 1.4rem; /* Smaller font size */
-  }
-
   .dialog-content {
-    padding: 12px; /* Reduced padding */
+    padding: 8px !important; /* Reduced padding for cleaner look */
   }
 
   .dialog-image {
-    max-width: 100%; /* Full width for mobile */
-    margin-bottom: 12px; /* Reduced margin */
+    width: 100% !important;
+    margin-bottom: 8px !important; /* Reduced margin for cleaner look */
   }
 
   .dialog-description {
-    font-size: 1rem; /* Smaller font size */
-    margin-bottom: 12px; /* Reduced margin */
+    font-size: 0.9rem !important; /* Adjusted for cleaner look */
+    margin-bottom: 8px !important; /* Reduced margin for cleaner look */
+  }
+
+  .dialog-item-card {
+    margin-bottom: 8px !important; /* Reduced margin for cleaner look */
   }
 
   .dialog-item-icon {
-    font-size: 1.2rem; /* Smaller icon size */
+    font-size: 1.2rem !important; /* Adjusted for cleaner look */
   }
 
   .dialog-item-text {
-    font-size: 0.9rem; /* Smaller font size */
+    font-size: 0.9rem !important; /* Adjusted for cleaner look */
   }
 
   .dialog-close-button {
-    margin: 8px 0; /* Reduced margin */
+    margin: 8px 0; /* Reduced margin for cleaner look */
   }
 }

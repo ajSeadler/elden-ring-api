@@ -48,7 +48,7 @@ const BossSearch = () => {
   return (
     <div className="boss-search-container">
       <TextField
-        label="Search Bosses"
+        label="Search baby back bitches"
         variant="outlined"
         fullWidth
         value={searchQuery}
