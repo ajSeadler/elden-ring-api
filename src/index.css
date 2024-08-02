@@ -12,13 +12,6 @@
   font-family: "Elden Ring" !important;
 }
 
-body {
-  background: url("/public/background-tarnished.jpg") no-repeat center center
-    fixed; /* Fixed background */
-  background-size: cover; /* Cover the entire viewport */
-  color: #e0e0e0; /* Light text color */
-  overflow-x: hidden;
-}
 /* index.css */
 
 /* Home Container Styles */
@@ -123,12 +116,14 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background: url("/background-tarnished.jpg") no-repeat center center fixed !important; /* Fixed background */
+  background-size: cover !important;
 }
 
 .header {
   display: flex;
   flex-direction: column;
-
+  color: #fff;
   justify-content: center;
   align-items: center;
   padding: 5px;
@@ -371,12 +366,6 @@ body {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  body {
-    background: url("/public/background-tarnished.jpg") no-repeat center center
-      fixed; /* Fixed background */
-    background-size: cover; /* Cover the entire viewport */
-  }
-
   .dialog-content {
     grid-template-columns: 1fr; /* Single column for tablets */
     padding: 12px; /* Reduced padding for cleaner look */
