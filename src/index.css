@@ -117,6 +117,7 @@
   flex-direction: column;
   min-height: 100vh;
   background: url("/main-bg.jpg");
+  background-position: center;
   background-size: cover; /* Ensures the image covers the entire container */
   background-attachment: fixed; /* Keeps the image fixed when scrolling */
 }
