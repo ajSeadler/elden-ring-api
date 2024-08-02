@@ -11,6 +11,7 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  Pagination,
   FormControl,
   InputLabel,
   Select,
@@ -28,14 +29,31 @@ const BossSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBoss, setSelectedBoss] = useState(null);
   const [sortOrder, setSortOrder] = useState("none");
+  const [currentPage, setCurrentPage] = useState(1);
+  const bossesPerPage = 50;
 
   useEffect(() => {
     const fetchBosses = async () => {
       try {
-        const response = await fetch("https://eldenring.fanapis.com/api/bosses");
+        const response = await fetch(
+          "https://eldenring.fanapis.com/api/bosses?limit=500"
+        );
         const data = await response.json();
-        setBosses(data.data);
-        setFilteredBosses(data.data);
+
+        // Filter out duplicates based on normalized boss names and filter out bosses without images
+        const uniqueBossesMap = new Map();
+
+        data.data.forEach((boss) => {
+          if (boss.image) {
+            const normalizedName = normalizeName(boss.name);
+            if (!uniqueBossesMap.has(normalizedName)) {
+              uniqueBossesMap.set(normalizedName, boss);
+            }
+          }
+        });
+
+        setBosses(Array.from(uniqueBossesMap.values()));
+        setFilteredBosses(Array.from(uniqueBossesMap.values()));
       } catch (error) {
         console.error("Error fetching bosses:", error);
       }
@@ -57,10 +75,27 @@ const BossSearch = () => {
     }
 
     setFilteredBosses(filtered);
+    setCurrentPage(1);
   }, [searchQuery, bosses, sortOrder]);
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
 
   const handleSortChange = (event) => {
     setSortOrder(event.target.value);
+  };
+
+  const indexOfLastBoss = currentPage * bossesPerPage;
+  const indexOfFirstBoss = indexOfLastBoss - bossesPerPage;
+  const currentBosses = filteredBosses.slice(indexOfFirstBoss, indexOfLastBoss);
+
+  const handleCardClick = (boss) => {
+    setSelectedBoss(boss);
+  };
+
+  const handleClose = () => {
+    setSelectedBoss(null);
   };
 
   return (
@@ -84,9 +119,9 @@ const BossSearch = () => {
       </FormControl>
 
       <Grid container spacing={2} className="boss-grid">
-        {filteredBosses.map((boss) => (
+        {currentBosses.map((boss) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={boss.id}>
-            <Card className="boss-card" onClick={() => setSelectedBoss(boss)}>
+            <Card className="boss-card" onClick={() => handleCardClick(boss)}>
               <CardMedia
                 component="img"
                 image={boss.image}
@@ -110,9 +145,18 @@ const BossSearch = () => {
         ))}
       </Grid>
 
+      <Pagination
+        count={Math.ceil(filteredBosses.length / bossesPerPage)}
+        page={currentPage}
+        onChange={handlePageChange}
+        color="primary"
+        className="pagination"
+      />
+
       <Dialog
         open={Boolean(selectedBoss)}
-        onClose={() => setSelectedBoss(null)}
+        onClose={handleClose}
+        classes={{ paper: "dialog-paper" }}
         maxWidth="md"
         fullWidth
       >
@@ -151,7 +195,7 @@ const BossSearch = () => {
             </DialogContent>
             <DialogActions className="dialog-actions">
               <Button
-                onClick={() => setSelectedBoss(null)}
+                onClick={handleClose}
                 color="primary"
                 className="dialog-close-button"
               >
