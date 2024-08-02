@@ -13,7 +13,9 @@
 }
 
 body {
-  background-color: #1c1c1c; /* Dark background */
+  background: url("/public/background-tarnished.jpg") no-repeat center center
+    fixed; /* Fixed background */
+  background-size: cover; /* Cover the entire viewport */
   color: #e0e0e0; /* Light text color */
   overflow-x: hidden;
 }
