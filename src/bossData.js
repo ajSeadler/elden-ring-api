@@ -8,7 +8,7 @@ const bossData = [
       "Eustace, the self-proclaimed 'King of Crust,' emerged from the depths of obscurity with a battle-ready arsenal caked in muck and rebellion. With a personality as polished as his dirty gear, he's here to make a mess of things and collect your Runes while he’s at it. Approach with caution—his presence is as subtle as a sledgehammer in a library.",
     location: "Toilet",
     drops: ["420,666 Runes", "Inquisitor's Grand Hole"],
-    healthPoints: "???",
+    healthPoints: "1,420,666",
     weakness: "Nothing",
   },
 
