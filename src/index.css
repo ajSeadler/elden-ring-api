@@ -371,6 +371,12 @@ body {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+  body {
+    background: url("/public/background-tarnished.jpg") no-repeat center center
+      fixed; /* Fixed background */
+    background-size: cover; /* Cover the entire viewport */
+  }
+
   .dialog-content {
     grid-template-columns: 1fr; /* Single column for tablets */
     padding: 12px; /* Reduced padding for cleaner look */
