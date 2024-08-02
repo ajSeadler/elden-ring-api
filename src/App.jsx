@@ -1,5 +1,8 @@
+// src/App.js
+
 import React from "react";
 import BossSearch from "./BossSearch";
+import ScrollToTopButton from "./ScollToTopButton";
 
 const App = () => {
   return (
@@ -12,6 +15,9 @@ const App = () => {
         <BossSearch />
       </main>
       <footer className="footer"></footer>
+
+      {/* Add the ScrollToTopButton */}
+      <ScrollToTopButton />
     </div>
   );
 };

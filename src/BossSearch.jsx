@@ -1,5 +1,3 @@
-// src/BossSearch.js
-
 import React, { useState, useEffect } from "react";
 import {
   TextField,
@@ -37,6 +35,35 @@ const BossSearch = () => {
     setFilteredBosses(filtered);
   }, [searchQuery]);
 
+  // Sorting functions
+  const sortByNameAsc = () => {
+    const sorted = [...filteredBosses].sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+    setFilteredBosses(sorted);
+  };
+
+  const sortByNameDesc = () => {
+    const sorted = [...filteredBosses].sort((a, b) =>
+      b.name.localeCompare(a.name)
+    );
+    setFilteredBosses(sorted);
+  };
+
+  const sortByHealthAsc = () => {
+    const sorted = [...filteredBosses].sort(
+      (a, b) => parseInt(a.healthPoints) - parseInt(b.healthPoints)
+    );
+    setFilteredBosses(sorted);
+  };
+
+  const sortByHealthDesc = () => {
+    const sorted = [...filteredBosses].sort(
+      (a, b) => parseInt(b.healthPoints) - parseInt(a.healthPoints)
+    );
+    setFilteredBosses(sorted);
+  };
+
   const handleCardClick = (boss) => {
     setSelectedBoss(boss);
   };
@@ -63,6 +90,30 @@ const BossSearch = () => {
         Click a boss card for more info
       </Typography>
 
+      {/* Sorting Buttons */}
+      <div
+        className="sorting-buttons"
+        style={{
+          display: "flex",
+          gap: "10px",
+          justifyContent: "center",
+          marginBottom: "20px",
+        }}
+      >
+        <Button onClick={sortByNameAsc} variant="outlined" color="primary">
+          A-Z
+        </Button>
+        <Button onClick={sortByNameDesc} variant="outlined" color="primary">
+          Z-A
+        </Button>
+        <Button onClick={sortByHealthAsc} variant="outlined" color="primary">
+          Lowest HP
+        </Button>
+        <Button onClick={sortByHealthDesc} variant="outlined" color="primary">
+          Highest HP
+        </Button>
+      </div>
+
       <Grid container spacing={2} className="boss-grid">
         {filteredBosses.length > 0 ? (
           filteredBosses.map((boss) => (
@@ -82,9 +133,12 @@ const BossSearch = () => {
                   >
                     {boss.name}
                   </Typography>
-                  <Typography variant="body2" className="boss-card-description">
-                    {boss.description}
-                  </Typography>
+                  <div className="dialog-item">
+                    <HealthAndSafetyIcon className="dialog-item-icon" />
+                    <Typography variant="body1" className="dialog-item-text">
+                      {boss.healthPoints}
+                    </Typography>
+                  </div>
                 </CardContent>
               </Card>
             </Grid>
@@ -114,6 +168,9 @@ const BossSearch = () => {
                 alt={selectedBoss.name}
                 className="dialog-image"
               />
+              <Typography variant="body2" className="boss-card-tip">
+                Scroll down for more info
+              </Typography>
               <Typography variant="body2" className="dialog-description">
                 {selectedBoss.description}
               </Typography>

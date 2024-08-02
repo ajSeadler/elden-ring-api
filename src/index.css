@@ -18,6 +18,68 @@ body {
   overflow-x: hidden;
 }
 
+/* index.css */
+
+/* Scroll to Top Button Styles */
+.scroll-to-top-button {
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  display: none !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  background-color: #333333 !important; /* Dark metallic background */
+  color: #fff !important;
+  border: 2px solid #8a8a8a !important; /* Metallic border */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+  transition: transform 0.3s ease, opacity 0.3s ease-in-out !important;
+  z-index: 1000 !important;
+  font-size: 0 !important; /* Hide text content */
+}
+
+.scroll-to-top-button.show {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0.9 !important;
+  font-size: 16px !important; /* Show text content */
+}
+
+.scroll-to-top-button:hover {
+  transform: translateY(-5px) !important; /* Lift effect */
+  background-color: #444444 !important; /* Slightly lighter for hover effect */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+.scroll-to-top-button svg {
+  color: #ffd700 !important; /* Elden Ring gold color */
+  font-size: 24px !important;
+}
+
+.scroll-to-top-button:before {
+  content: "" !important;
+  position: absolute !important;
+  top: -3px !important;
+  left: -3px !important;
+  right: -3px !important;
+  bottom: -3px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    #ffcc00,
+    transparent
+  ) !important;
+  z-index: -1 !important;
+  transition: 0.5s !important;
+}
+
+.scroll-to-top-button:hover:before {
+  filter: blur(8px) !important;
+  transform: scale(1.2) !important;
+}
+
 /* App Container */
 .app-container {
   display: flex;
@@ -28,6 +90,7 @@ body {
 .header {
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   align-items: center;
   padding: 5px;
@@ -42,6 +105,22 @@ body {
 .header-subtitle {
   font-size: 1.2rem; /* Adjusted for a cleaner look */
   margin-top: -0.5%;
+  color: #b50000;
+}
+
+.sorting-buttons button {
+  font-family: "Arial", sans-serif;
+  border-radius: 20px !important;
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  transition: background-color 0.3s ease-in-out !important;
+  text-transform: none !important;
+  padding: 8px 16px !important;
+}
+
+.sorting-buttons button:hover {
+  background-color: #1e1e1e !important;
 }
 
 /* Main Content */
@@ -147,8 +226,20 @@ body {
   padding: 12px; /* Reduced padding for a cleaner look */
 }
 
+/* index.css */
+
+.boss-card-tip {
+  white-space: nowrap !important; /* Prevent text wrapping */
+  text-align: center !important; /* Center the text */
+  margin-top: 10px !important; /* Add some margin */
+  color: #ababab !important; /* Elden Ring gold color for text */
+  font-weight: bold !important; /* Make text bold */
+  font-size: 1rem !important; /* Font size */
+  width: 100% !important; /* Ensure it takes the full width */
+}
+
 .boss-card-title {
-  color: #f2b632; /* Gold color */
+  color: #d5bd38; /* Gold color */
   font-size: 1.2rem; /* Adjusted for cleaner look */
 }
 
