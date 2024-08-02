@@ -1,3 +1,5 @@
+// src/BossSearch.js
+
 import React, { useState, useEffect } from "react";
 import {
   TextField,
@@ -11,72 +13,28 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
+import bossData from "./bossData"; // Import the data
 
 const normalizeName = (name) => name.replace(/[\.,]/g, "").trim().toLowerCase();
 
 const BossSearch = () => {
-  const [bosses, setBosses] = useState([]);
-  const [filteredBosses, setFilteredBosses] = useState([]);
+  const [filteredBosses, setFilteredBosses] = useState(bossData); // Initialize with bossData
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBoss, setSelectedBoss] = useState(null);
-  const [sortOrder, setSortOrder] = useState("A to Z");
 
   useEffect(() => {
-    const fetchBosses = async () => {
-      try {
-        const response = await fetch(
-          "https://eldenring.fanapis.com/api/bosses?limit=100"
-        );
-        const data = await response.json();
-
-        // Filter out duplicates based on normalized boss names and filter out bosses without images
-        const uniqueBossesMap = new Map();
-
-        data.data.forEach((boss) => {
-          if (boss.image) {
-            const normalizedName = normalizeName(boss.name);
-            if (!uniqueBossesMap.has(normalizedName)) {
-              uniqueBossesMap.set(normalizedName, boss);
-            }
-          }
-        });
-
-        setBosses(Array.from(uniqueBossesMap.values()));
-        setFilteredBosses(Array.from(uniqueBossesMap.values()));
-      } catch (error) {
-        console.error("Error fetching bosses:", error);
-      }
-    };
-
-    fetchBosses();
-  }, []);
-
-  useEffect(() => {
+    // If you want to filter based on the search query
     const queryWords = searchQuery.toLowerCase().split(" ").filter(Boolean);
-    const filtered = bosses.filter((boss) =>
+    const filtered = bossData.filter((boss) =>
       queryWords.every((word) => boss.name.toLowerCase().includes(word))
     );
 
-    if (sortOrder === "asc") {
-      filtered.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (sortOrder === "desc") {
-      filtered.sort((a, b) => b.name.localeCompare(a.name));
-    }
-
     setFilteredBosses(filtered);
-  }, [searchQuery, bosses, sortOrder]);
-
-  const handleSortChange = (event) => {
-    setSortOrder(event.target.value);
-  };
+  }, [searchQuery]);
 
   const handleCardClick = (boss) => {
     setSelectedBoss(boss);
@@ -96,41 +54,45 @@ const BossSearch = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
         className="search-bar"
       />
-
-      <FormControl fullWidth className="sort-control">
-        <InputLabel>Sort Order</InputLabel>
-        <Select value={sortOrder} onChange={handleSortChange}>
-          <MenuItem value="none">None</MenuItem>
-          <MenuItem value="asc">A to Z</MenuItem>
-          <MenuItem value="desc">Z to A</MenuItem>
-        </Select>
-      </FormControl>
+      <Typography
+        variant="body2"
+        className="boss-card-description"
+        style={{ marginBottom: "3%" }}
+      >
+        Click a boss card for more info
+      </Typography>
 
       <Grid container spacing={2} className="boss-grid">
-        {filteredBosses.map((boss) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={boss.id}>
-            <Card className="boss-card" onClick={() => handleCardClick(boss)}>
-              <CardMedia
-                component="img"
-                image={boss.image}
-                alt={boss.name}
-                className="boss-card-media"
-              />
-              <CardContent className="boss-card-content">
-                <Typography
-                  variant="h5"
-                  gutterBottom
-                  className="boss-card-title"
-                >
-                  {boss.name}
-                </Typography>
-                <Typography variant="body2" className="boss-card-description">
-                  {boss.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
+        {filteredBosses.length > 0 ? (
+          filteredBosses.map((boss) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={boss.id}>
+              <Card className="boss-card" onClick={() => handleCardClick(boss)}>
+                <CardMedia
+                  component="img"
+                  image={boss.image}
+                  alt={boss.name}
+                  className="boss-card-media"
+                />
+                <CardContent className="boss-card-content">
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    className="boss-card-title"
+                  >
+                    {boss.name}
+                  </Typography>
+                  <Typography variant="body2" className="boss-card-description">
+                    {boss.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))
+        ) : (
+          <Typography variant="h6" align="center" style={{ width: "100%" }}>
+            No bosses found
+          </Typography>
+        )}
       </Grid>
 
       <Dialog

@@ -162,9 +162,8 @@ body {
 }
 
 .dialog-title {
-  font-size: 1.8rem; /* Increased font size for better visibility */
+  font-size: 1.8rem !important; /* Increased font size for better visibility */
   font-weight: bold;
-  background-color: #121212;
   color: #fff;
   padding: 16px;
   text-align: center;
@@ -190,8 +189,9 @@ body {
 .dialog-description {
   color: #ccc;
   margin-bottom: 24px; /* Increased margin for spacing */
-  font-size: 1.2rem; /* Increased font size */
-  text-align: center; /* Center text alignment */
+  font-size: 1rem !important; /* Increased font size */
+  text-align: left; /* Center text alignment */
+  margin-bottom: 5% !important;
 }
 
 .dialog-item {
